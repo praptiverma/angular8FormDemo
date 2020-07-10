@@ -1,6 +1,10 @@
 <div class='container-fluid mb-5'>
     <h1>Template Driven Form</h1>
-    <form #userForm='ngForm' (ngSubmit)='onSubmit()' novalidate>
+
+    <div class='alert alert-danger' *ngIf='errorMsg'>
+        {{errorMsg}}
+    </div>
+    <form #userForm='ngForm' *ngIf='!submitted' (ngSubmit)='onSubmit(userForm)' novalidate>
 
 
         {{userForm.form.valid}}

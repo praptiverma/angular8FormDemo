@@ -11,8 +11,10 @@ export class AppComponent {
   constructor(private enrolservice:EnrollmentService){}
   title = 'angular-form-demo';
   topics=['Angular', 'React', 'Vague'];
+  submitted =false;
   userModel=new User('','mohit@gmail.com',8732947932,'default','morning',true)
   topicHasError=true;
+  errorMsg='';
   validateTopic(value){
     if(value == 'default')
     {
@@ -23,13 +25,18 @@ this.topicHasError=true;
   }
 
 
-  onSubmit()
-  {
-    this.enrolservice.enrol(this.userModel)
-    .subscribe(
-      data=>console.log('success',data),
-      error=>console.error('error',error)      
-    )
+  // onSubmit()
+  // {
+  //   this.submitted=true;
+  //   this.enrolservice.enrol(this.userModel)
+  //   .subscribe(
+  //     data=>console.log('success',data),
+  //     error=>this.errorMsg=error.statusText   
+  //   )
 
+  // }
+  onSubmit(userForm)
+  {
+    console.log(userForm);
   }
 }
